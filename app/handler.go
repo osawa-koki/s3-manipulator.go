@@ -2,11 +2,12 @@ package app
 
 import (
 	"context"
+	"log"
+	"os"
+
 	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
 	"github.com/joho/godotenv"
-	"log"
-	"os"
 )
 
 var (
