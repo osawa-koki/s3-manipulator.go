@@ -3,11 +3,19 @@ package app
 import (
 	"context"
 	"log"
+	"math/rand"
 	"os"
+	"time"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
 )
+
+func generateRandom(i1, i2 int) int {
+	seed := time.Now().UnixNano()
+	r := rand.New(rand.NewSource(seed))
+	return r.Intn(i2-i1) + i1
+}
 
 func deleteObject() {
 	log.Println("===== ===== ===== ===== =====")
@@ -23,12 +31,12 @@ func deleteObject() {
 	}
 
 	// 50%の確率で削除する。
-	if GenerateRandom(0, 1) != 0 {
+	if generateRandom(0, 1) != 0 {
 		log.Println("Skip deleting objects...")
 		return
 	}
 
-	object := output.Contents[GenerateRandom(0, len(output.Contents))]
+	object := output.Contents[generateRandom(0, len(output.Contents))]
 	log.Println("Deleting object: ", aws.ToString(object.Key))
 
 	_, err = S3_CLIENT.DeleteObject(context.TODO(), &s3.DeleteObjectInput{
