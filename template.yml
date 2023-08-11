@@ -1,0 +1,20 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "🐣🐣🐣 GoでS3を操作するサンプル！"
+
+Resources:
+  # S3バケット
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Delete
+    Properties:
+      BucketName: !Sub ${AWS::StackName}-s3-bucket
+      VersioningConfiguration:
+        Status: Enabled
+      Tags:
+        - Key: Name
+          Value: !Sub "${AWS::StackName}-s3-bucket"
+
+Outputs:
+  S3BucketName:
+    Description: "S3バケット名。"
+    Value: !Ref S3Bucket
