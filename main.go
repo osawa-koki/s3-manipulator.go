@@ -4,6 +4,6 @@ import (
 	"example.com/app"
 )
 
-func main()  {
-  app.Handler()
+func main() {
+	app.Handler()
 }
