@@ -30,6 +30,8 @@ jobs:
         install-go: false
     - name: Run go vet
       run: go vet ./...
+    - name: Run goimports
+      run: goimports -w . && git diff --exit-code
     - name: Build
       run: go build -v -o a.out
     - name: Test
