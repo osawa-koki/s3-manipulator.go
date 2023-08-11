@@ -37,4 +37,5 @@ func Init() {
 
 func Handler() {
 	listObject()
+	putObject()
 }
