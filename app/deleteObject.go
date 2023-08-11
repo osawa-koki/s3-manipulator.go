@@ -31,7 +31,7 @@ func deleteObject() {
 	}
 
 	// 50%の確率で削除する。
-	if generateRandom(0, 1) != 0 {
+	if generateRandom(0, 2) != 0 {
 		log.Println("Skip deleting objects...")
 		return
 	}
