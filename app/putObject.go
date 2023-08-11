@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
+	"os"
 	"time"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
@@ -66,7 +67,10 @@ type Body struct {
 }
 
 func putObject() {
-	// Create a new Amazon S3 bucket
+	log.Println("===== ===== ===== ===== =====")
+	log.Println("===== Putting Object =====")
+	log.Println("===== ===== ===== ===== =====")
+
 	bodyMessage := getBodyMessageString()
 	body := Body{
 		Message:   bodyMessage,
@@ -75,6 +79,7 @@ func putObject() {
 	jsonBody, err := json.Marshal(body)
 	if err != nil {
 		log.Fatal(err)
+		os.Exit(1)
 	}
 	_, err = S3_CLIENT.PutObject(context.TODO(), &s3.PutObjectInput{
 		Bucket: aws.String(S3_BUCKET_NAME),
@@ -83,5 +88,6 @@ func putObject() {
 	})
 	if err != nil {
 		log.Fatal(err)
+		os.Exit(1)
 	}
 }
