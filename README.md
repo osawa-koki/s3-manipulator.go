@@ -40,6 +40,7 @@ Default output format [None]: json
 | AWS_ACCESS_KEY_ID | アクセスキーID |
 | AWS_SECRET_ACCESS_KEY | シークレットアクセスキー |
 | AWS_REGION | リージョン名 |
+| DOTENV | .envファイルの中身 |
 
 ## 実行方法
 

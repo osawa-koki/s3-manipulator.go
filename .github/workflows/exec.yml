@@ -27,5 +27,7 @@ jobs:
         aws-region: ${{ secrets.AWS_REGION }}
     - name: Build
       run: go build -v -o a.out .
+    - name: Create .env file
+      run: echo $'${{ secrets.DOTENV }}' > .env
     - name: Exec
       run: ./a.out
