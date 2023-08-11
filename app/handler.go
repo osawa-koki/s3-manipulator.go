@@ -11,7 +11,7 @@ import (
 
 var (
 	S3_BUCKET_NAME string
-	S3_CLIENT			*s3.Client
+	S3_CLIENT      *s3.Client
 )
 
 func Init() {
