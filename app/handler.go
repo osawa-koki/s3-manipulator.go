@@ -3,10 +3,29 @@ package app
 import (
 	"context"
 	"log"
+	"os"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
+	"github.com/joho/godotenv"
 )
+
+var (
+	S3_BUCKET_NAME string
+)
+
+func Init() {
+  err := godotenv.Load()
+  if err != nil {
+    log.Fatal("Error loading .env file")
+		os.Exit(1)
+  }
+	S3_BUCKET_NAME = os.Getenv("S3_BUCKET_NAME")
+	if S3_BUCKET_NAME == "" {
+		log.Fatal("Error loading S3_BUCKET_NAME")
+		os.Exit(1)
+	}
+}
 
 func Handler() {
 	// Load the Shared AWS Configuration (~/.aws/config)
@@ -20,7 +39,7 @@ func Handler() {
 
 	// Get the first page of results for ListObjectsV2 for a bucket
 	output, err := client.ListObjectsV2(context.TODO(), &s3.ListObjectsV2Input{
-		Bucket: aws.String("s3-manipulator-go-s3-bucket"),
+		Bucket: aws.String(S3_BUCKET_NAME),
 	})
 	if err != nil {
 		log.Fatal(err)
