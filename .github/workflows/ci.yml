@@ -35,7 +35,7 @@ jobs:
     - name: Run go vet
       run: go vet ./...
     - name: Run goimports
-      run: goimports -w . && git diff --exit-code
+      run: go install golang.org/x/tools/cmd/goimports@v0.12.0 && goimports -w . && git diff --exit-code
     - name: Build
       run: go build -v -o a.out
     - name: Test
