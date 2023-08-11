@@ -38,4 +38,5 @@ func Init() {
 func Handler() {
 	listObject()
 	putObject()
+	getObject()
 }
