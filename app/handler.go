@@ -5,6 +5,5 @@ import (
 )
 
 func Handler() {
-	a := 1
 	fmt.Println("Hello World!!!")
 }
