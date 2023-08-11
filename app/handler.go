@@ -40,4 +40,5 @@ func Handler() {
 	listObject()
 	putObject()
 	getObject()
+	deleteObject()
 }
