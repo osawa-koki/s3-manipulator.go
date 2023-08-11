@@ -1,8 +1,9 @@
 package app_test
 
 import (
-	"example.com/app"
 	"testing"
+
+	"example.com/app"
 )
 
 func TestGenerateRandom(t *testing.T) {
