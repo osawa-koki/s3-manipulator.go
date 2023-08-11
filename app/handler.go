@@ -30,6 +30,7 @@ func Init() {
 	cfg, err := config.LoadDefaultConfig(context.TODO())
 	if err != nil {
 		log.Fatal(err)
+		os.Exit(1)
 	}
 	// Create an Amazon S3 service client
 	S3_CLIENT = s3.NewFromConfig(cfg)
