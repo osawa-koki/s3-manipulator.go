@@ -1,8 +1,8 @@
 package app
 
 import (
-	"os"
 	"fmt"
+	"os"
 )
 
 func Handler() {
